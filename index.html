@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Login</title>
+
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background: #fdf6e3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .love-icon {
+        position: absolute;
+        font-size: 20px;
+        color: #ff3b2f;
+        pointer-events: none;
+        opacity: 0.7;
+        animation: float 5s infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(15deg); }
+        100% { transform: translateY(0) rotate(-15deg); }
+    }
+
+    .login-box {
+        background: #fff8dc;
+        padding: 30px;
+        width: 320px;
+        border: 3px dashed #c49e65;
+        border-radius: 12px;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        transform: rotate(-1deg);
+    }
+
+    .tape {
+        position: absolute;
+        width: 60px;
+        height: 20px;
+        background: #f0e68c;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%) rotate(-10deg);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        border-radius: 2px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+
+    .password-container {
+        position: relative;
+    }
+
+    .toggle-btn {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #d2691e;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    button.login-btn {
+        width: 100%;
+        padding: 12px;
+        background: #ff6f61;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    button.login-btn:hover {
+        background: #ff3b2f;
+    }
+
+    .error {
+        color: red;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="login-box">
+    <div class="tape"></div>
+    <h2>Login ❤️</h2>
+
+    <input id="key" type="text" placeholder="Enter Key">
+
+    <div class="password-container">
+        <input id="password" type="password" placeholder="Enter Password">
+        <button type="button" class="toggle-btn" onclick="togglePassword()">Show</button>
+    </div>
+
+    <button class="login-btn" onclick="login()">Login</button>
+
+    <p id="error" class="error"></p>
+</div>
+
+<script>
+function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const toggleBtn = document.querySelector(".toggle-btn");
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleBtn.innerText = "Hide";
+    } else {
+        passwordInput.type = "password";
+        toggleBtn.innerText = "Show";
+    }
+}
+
+function login() {
+    const key = document.getElementById("key").value;
+    const pass = document.getElementById("password").value;
+
+    const correctKey = "Ashreenz";      
+    const correctPass = "ashrafsayangazreen";  
+
+    if (key === correctKey && pass === correctPass) {
+        window.location.href = "home.html";
+    } else {
+        document.getElementById("error").innerText = "Key atau Password salah!";
+    }
+}
+
+// Create random love icons in the background
+const icons = ["❤️","💌","💕","💖","💘","🤍"];
+for(let i=0; i<30; i++){
+    const icon = document.createElement('div');
+    icon.className = 'love-icon';
+    icon.innerText = icons[Math.floor(Math.random()*icons.length)];
+    icon.style.top = Math.random()*100 + "%";
+    icon.style.left = Math.random()*100 + "%";
+    icon.style.fontSize = (20 + Math.random()*30) + "px";
+    icon.style.opacity = 0.5 + Math.random()*0.5;
+    document.body.appendChild(icon);
+}
+</script>
+
+</body>
+</html>
