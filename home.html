@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<style>
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: #fdf6e3;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Box Styles */
+.box {
+    background: #fff8dc;
+    padding: 25px 30px;
+    border: 3px dashed #c49e65;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    text-align: center;
+    position: relative;
+    z-index: 2; /* box di atas gambar */
+    transform: rotate(-1deg);
+    margin: 40px auto;
+    max-width: 400px;
+}
+
+.tape {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+    background: #f0e68c;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-10deg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 2px;
+}
+
+h1 { color: #ff3b2f; margin-bottom: 10px; }
+h2 { color: #d2691e; margin-bottom: 10px; }
+p { font-size: 16px; color: #333; }
+
+/* Floating Images */
+.floating-img {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    z-index: 1; /* di bawah box */
+}
+
+/* Floating Emojis */
+.floating-emoji {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.7;
+    animation: float 5s infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(-5deg); }
+}
+</style>
+</head>
+<body>
+
+<!-- Welcome Box -->
+<div class="box">
+    <div class="tape"></div>
+    <h1>Assalamualaikum, Sayangku ❤️</h1>
+    <p>This web was specially made for you 🫶🏻</p>
+</div>
+
+<!-- Confession Box -->
+<div class="box">
+    <div class="tape"></div>
+    <h2>Special letter for Azreen Azwani 💌</h2>
+    <p>
+       Hello babykuu, i know its not even one of our special day that make me 
+       write this letter, but it is what it is lah kann hahaha. 
+       First of all , i think there’s no words more suitable to said to you 
+       except “ THANK YOU SO MUCH SAYANGKU “ …., you already know what i mean kann ?? Hehe…. 
+       Thanksss sangat sangat untuk apa yang kamu buat, apa yang kamu bagi, apa yang kamu usahakan untuk 
+       saya on all this time. This whole 3 years will not be easy for me to face without kamu sayangg…. 
+       Im pretty shy to said this but already said it thousand times….
+        “ I can’t stand like this and do what Im doing know without you “ kamu lah 
+        sumber semangat saya to face all the things that comes over my life…, saya harap sangat kamu 
+        dapat bersabar dengan segala karenah saya like manjaa bla bla bla..,,,, i know sayang dah banyak 
+        bersabar dengan perangai i. Thanks tauuu because still choosing me after you see so much lack in bad 
+        way in me…, Thankss sayangg. Inshaallah we’ll make it forever together. 
+        Iloveyouuu so much Nur Azreen Azwani binti Zainulhisham 🤍
+    </p>
+</div>
+
+<script>
+// Tetapkan 4 gambar: kanan atas/bawah, kiri atas/bawah
+const images = [
+    {src:'image/ff.jpeg', top:'5%', left:'75%', width: '120px', height: '160px'},   // kanan atas
+    {src:'image/kk.jpeg', top:'70%', left:'75%', width: '120px', height: '160px'}, // kanan bawah
+    {src:'image/ll.jpeg', top:'5%', left:'5%', width: '120px', height: '160px'},    // kiri atas
+    {src:'image/zz.jpeg', top:'70%', left:'5%', width: '120px', height: '160px'}   // kiri bawah
+];
+
+
+images.forEach(img => {
+    const div = document.createElement('div');
+    div.className = 'floating-img';
+    div.style.backgroundImage = `url('${img.src}')`;
+    div.style.top = img.top;
+    div.style.left = img.left;
+    div.style.width = img.width;
+    div.style.height = img.height;
+    div.style.transform = `rotate(${Math.random()*10-5}deg)`; // rotate sedikit rawak
+    document.body.appendChild(div);
+});
+
+// Floating emojis kecil
+const emojis = ['❤️','🤍','❤️','🤍'];
+for(let i=0; i<17; i++){
+    const em = document.createElement('div');
+    em.className = 'floating-emoji';
+    em.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+    em.style.top = (10 + Math.random()*80) + '%';
+    em.style.left = (10 + Math.random()*90) + '%';
+    em.style.fontSize = (16 + Math.random()*12) + 'px';
+    document.body.appendChild(em);
+}
+</script>
+
+</body>
+</html>
